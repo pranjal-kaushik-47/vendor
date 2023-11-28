@@ -7,6 +7,7 @@ class VendorSerializer(serializers.ModelSerializer):
         data = super().to_representation(instance)
         data.pop('username')
         data.pop('password')
+        return data
     
     class Meta:
         model = Vendor

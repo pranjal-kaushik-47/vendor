@@ -3,6 +3,6 @@ from account.views import VendorViewSet
 
 router = DefaultRouter()
 
-router.register(r'vendor', VendorViewSet, basename='vendor')
+router.register(r'', VendorViewSet, basename='vendor')
 
 urlpatterns = router.urls

@@ -13,6 +13,7 @@ setup database (postgres cli):
 CREATE DATABASE Vendor;
 CREATE USER admin WITH PASSWORD 'password';
 GRANT ALL PRIVILEGES ON DATABASE Vendor TO admin;
+ALTER USER admin CREATEDB;
 ```
 
 setup python environment:
