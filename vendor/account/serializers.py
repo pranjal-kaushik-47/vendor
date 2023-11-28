@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from account.models import Vendor
+from account.models import Vendor, HistoricalPerformance
 
 class VendorSerializer(serializers.ModelSerializer):
 
@@ -9,6 +9,15 @@ class VendorSerializer(serializers.ModelSerializer):
         data.pop('password')
         return data
     
+
     class Meta:
         model = Vendor
+        fields = "__all__"
+
+
+class HistoricalPerformanceSerializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = HistoricalPerformance
         fields = "__all__"

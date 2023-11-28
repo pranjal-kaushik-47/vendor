@@ -8,12 +8,22 @@ from django.db.models import Avg, F
 
 @receiver(pre_save, sender=PurchaseOrder)
 def handel_oldinstance(sender, instance, **kwargs):
+    '''
+    save the old instance of the PurchaseOrder so to use in post save for comparison
+    '''
     old_instance = PurchaseOrder.objects.filter(id=instance.id).last()
     instance.old_instance = old_instance
 
 
 @receiver(post_save, sender=PurchaseOrder)
 def handel_orders(sender, instance, created, **kwargs):
+    '''
+    This signal is designed to respond to changes in instances of the PurchaseOrder model.
+    When a PurchaseOrder instance is saved, this signal checks for specific conditions and
+    calculates various performance metrics related to the order and its vendor.
+    It then updates or creates a HistoricalPerformance record and updates the corresponding
+    Vendor record with aggregated historical performance metrics.
+    '''
     if not created:
         orders = PurchaseOrder.objects.filter(vendor_id=instance.vendor_id)
         on_time_delivery_rate = quality_rating_avg = average_response_time = fulfillment_rate = None
