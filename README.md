@@ -19,7 +19,19 @@ setup python environment:
 ```
 python -m venv venv
 source venv/bin/activate
-pip install -r vendor/requirement.txt
+cd vendor
+pip install -r requirement.txt
+```
+
+migrating the database:
+```
+./manage.py makemigrations
+./manage.py migrate
+```
+
+create a superuser:
+```
+./manage.py createsuperuser
 ```
 
 # Running Test
@@ -33,6 +45,7 @@ pip install -r vendor/requirement.txt
 ```
 
 Note:<br>
+Admin panel: ```127.0.0.1:8000/admin/```<br>
 API documentation url (swagger): ```127.0.0.1:8000/swagger/```<br>
 API documentation url (redoc): ```127.0.0.1:8000/redoc/```
 
