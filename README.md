@@ -40,7 +40,7 @@ create a superuser:
 ./manage.py test
 ```
 
-# Starting surver
+# Starting server
 ```
 ./manage.py runserver
 ```
